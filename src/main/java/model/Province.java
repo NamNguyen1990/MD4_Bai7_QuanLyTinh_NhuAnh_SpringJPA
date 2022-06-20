@@ -14,6 +14,8 @@ public class Province {
     private String description;
 
     public Province() {
+
+
     }
 
     public Province(Long id, String name, String description) {

@@ -1,9 +1,8 @@
-package service.impl;
+package service.province;
 
 import model.Province;
 import org.springframework.beans.factory.annotation.Autowired;
 import repository.ProvinceRepository;
-import service.ProvinceService;
 
 import java.util.Optional;
 

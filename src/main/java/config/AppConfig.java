@@ -1,6 +1,7 @@
 package config;
 
 
+import formatter.ProvinceFormatter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -18,14 +19,15 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
-import service.ProvinceService;
-import service.impl.ProvinceServiceImpl;
+import service.customer.CustomerService;
+import service.customer.CustomerServiceImpl;
+import service.province.ProvinceService;
+import service.province.ProvinceServiceImpl;
 
 
 import javax.persistence.EntityManager;
@@ -121,5 +123,16 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     @Bean
     public ProvinceService provinceService() {
         return new ProvinceServiceImpl();
+    }
+
+    @Bean
+    public CustomerService customerService() {
+        return new CustomerServiceImpl();
+    }
+
+    // cấu hình formatter
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new ProvinceFormatter(applicationContext.getBean(ProvinceService.class)));
     }
 }

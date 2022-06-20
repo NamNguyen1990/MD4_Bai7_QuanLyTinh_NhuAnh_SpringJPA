@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="/customers/create">
+    Tạo mới Customer
+</a>
+
+<div  th:each="cus : ${customers}" >
+    <span th:text="${cus.firstName}"></span>
+    <span th:text="${cus.lastName}"></span>
+    <span th:text="${cus.province.name}"></span>
+    <span th:text="${cus.province.description}"></span>
+
+    <a th:href="@{/customers/edit/__${cus.id}__ }">Sửa</a>
+    <a th:href="@{/customers/delete/__${cus.id}__ }">Xóa</a>
+</div>
+
+</body>
+</html>

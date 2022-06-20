@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    <input type="hidden" th:value="${cus.id}">
+    <input type="text" name="firstName" th:value="${cus.firstName}">
+    <input type="text" name="lastName" th:value="${cus.lastName}">
+    <select name="provinceId">
+        <option th:each="pro : ${provinces}" th:value="${pro.getId()}" th:text="${pro.getName()}"></option>
+    </select>
+    <button>Lưu </button>
+</form>
+</body>
+</html>
